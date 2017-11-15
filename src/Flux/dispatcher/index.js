@@ -1,0 +1,5 @@
+// Core
+
+export default {
+    register: () => {}
+};
