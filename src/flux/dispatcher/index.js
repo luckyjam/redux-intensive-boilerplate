@@ -1,5 +1,3 @@
-// Core
-
 export default {
     register: () => {}
 };
