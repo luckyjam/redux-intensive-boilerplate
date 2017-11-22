@@ -1,6 +1,11 @@
 // Core
 import React, { Component } from 'react';
 import { bool, func } from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// Instruments
+import authActions from 'actions/auth';
 
 // Components
 import Spinner from 'components/Spinner';
@@ -8,15 +13,10 @@ import Navigation from 'components/Navigation';
 import Catcher from 'components/Catcher';
 import SignupForm from 'components/Forms/Signup';
 
-export default class Signup extends Component {
+class Signup extends Component {
     static propTypes = {
         authFetching: bool.isRequired,
         signup:       func.isRequired
-    };
-
-    static defaultPops = {
-        authFetching: false,
-        signup:       () => {}
     };
 
     render () {
@@ -31,3 +31,14 @@ export default class Signup extends Component {
         ];
     }
 }
+
+const mapStateToProps = ({ auth, ui }) => ({
+    authenticated: auth.get('authenticated'),
+    authFetching:  ui.get('authFetching')
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    signup: bindActionCreators(authActions.signup, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

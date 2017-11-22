@@ -1,5 +1,4 @@
 // Core
+import { Dispatcher } from 'flux';
 
-export default {
-    register: () => {}
-};
+export default new Dispatcher();

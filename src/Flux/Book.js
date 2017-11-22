@@ -3,16 +3,36 @@ import React, { Component } from 'react';
 
 // Instruments
 import Styles from './styles';
+import { changePage } from './actions';
+import dispatcher from './dispatcher';
+import MagicBookStore from './stores';
 
 export default class Book extends Component {
-    state = {
-        title:       'Magic and Enchantment',
-        totalPages:  898,
-        currentPage: '1'
-    };
+    constructor () {
+        super();
 
-    changePage () {
+        this.onChange = ::this._onChange;
+        this.changePage = ::this._changePage;
+    }
 
+    state = MagicBookStore.getInitialState();
+
+    componentDidMount () {
+        MagicBookStore.subscribe(this.onChange);
+    }
+
+    componentWillUnmount () {
+        MagicBookStore.unsubscribe(this.onChange);
+    }
+
+    _onChange () {
+        this.setState(() => ({
+            currentPage: MagicBookStore.getCurrentPage()
+        }));
+    }
+
+    _changePage (event) {
+        dispatcher.dispatch(changePage(event.target.value));
     }
 
     render () {

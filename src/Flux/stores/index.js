@@ -8,7 +8,11 @@ export default new class MagicBookStore extends EventEmitter {
     constructor () {
         super();
 
-        this.state = {};
+        this.state = {
+            title:       'Magic and Enchantment',
+            totalPages:  898,
+            currentPage: '1'
+        };
 
         dispatcher.register((action) => {
             switch (action.type) {

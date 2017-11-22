@@ -1,15 +1,15 @@
 // Core
 import React, { Component } from 'react';
 import { func, bool } from 'prop-types';
-// import { Form, Errors } from 'react-redux-form';
-// import cx from 'classnames';
+import { Form, Errors } from 'react-redux-form';
+import cx from 'classnames';
 
 // Instruments
-// import Styles from './styles';
-// import { validateEmail, validateLength } from 'instruments/validators';
+import Styles from './styles';
+import { validateEmail, validateLength } from 'instruments/validators';
 
 // Components
-// import Input from 'components/Input';
+import Input from 'components/Input';
 
 export default class LoginForm extends Component {
     static propTypes = {
@@ -28,31 +28,18 @@ export default class LoginForm extends Component {
     }
 
     render () {
-        // const { authFetching } = this.props;
+        const { authFetching } = this.props;
 
-        // const disabledInputStyle = cx({
-        //     [Styles.disabledInput]: authFetching
-        // });
+        const disabledInputStyle = cx({
+            [Styles.disabledInput]: authFetching
+        });
 
-        // const buttonStyle = cx(Styles.loginSubmit, {
-        //     [Styles.disabledButton]: authFetching
-        // });
+        const buttonStyle = cx(Styles.loginSubmit, {
+            [Styles.disabledButton]: authFetching
+        });
 
         return (
-            <h1
-                style = { {
-                    textAlign: 'center',
-                    marginTop: '100px'
-                } }>
-                login
-            </h1>
-        );
-    }
-}
-
-{
-
-    /*             <Form
+            <Form
                 className = { Styles.form }
                 model = 'forms.login'
                 onSubmit = { this.handleSubmit }>
@@ -102,6 +89,7 @@ export default class LoginForm extends Component {
                     type = 'submit'>
                     {authFetching ? 'Working...' : 'Log In'}
                 </button>
-            </Form> 
-*/
+            </Form>
+        );
+    }
 }
