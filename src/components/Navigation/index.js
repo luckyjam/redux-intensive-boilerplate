@@ -1,25 +1,18 @@
 // Coret
 import React, { Component } from 'react';
 import { bool, object, func } from 'prop-types';
-// import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 // Instruments
 import Styles from './styles';
+import pages from 'routes/pages';
 
-export default class Navigation extends Component {
+class Navigation extends Component {
     static propTypes = {
         authenticated: bool.isRequired,
         logout:        func.isRequired,
         profile:       object.isRequired
-    };
-
-    static defaultProps = {
-        authenticated: false,
-        logout:        () => {},
-        profile:       {
-            firstName: 'guest',
-            avatar:    ''
-        }
     };
 
     constructor () {
@@ -34,24 +27,36 @@ export default class Navigation extends Component {
 
         return authenticated
             ? [
-                <a className = { Styles.active } key = '0' to = '/redux/profile'>
+                <NavLink
+                    activeClassName = { Styles.active }
+                    key = '0'
+                    to = { pages.profile }>
                     <img src = { avatar } />
                     {firstName}
-                </a>,
-                <a className = { Styles.active } key = '1' to = '/redux/feed'>
+                </NavLink>,
+                <NavLink
+                    activeClassName = { Styles.active }
+                    key = '1'
+                    to = { pages.feed }>
                       Feed
-                </a>,
+                </NavLink>,
                 <a key = '2' onClick = { this.logout }>
                       Log Out
                 </a>
             ]
             : [
-                <a className = { Styles.active } key = '0' to = '/redux/login'>
+                <NavLink
+                    activeClassName = { Styles.active }
+                    key = '0'
+                    to = { pages.login }>
                       Log In
-                </a>,
-                <a className = { Styles.active } key = '1' to = '/redux/sign-up'>
+                </NavLink>,
+                <NavLink
+                    activeClassName = { Styles.active }
+                    key = '1'
+                    to = { pages['sign-up'] }>
                       Sign Up
-                </a>
+                </NavLink>
             ];
     }
 
@@ -65,3 +70,10 @@ export default class Navigation extends Component {
         return <section className = { Styles.navigation }>{navigation}</section>;
     }
 }
+
+const mapStateToProps = ({ auth, profile }) => ({
+    authenticated: auth.get('authenticated'),
+    profile:       profile.toJS()
+});
+
+export default connect(mapStateToProps)(Navigation);

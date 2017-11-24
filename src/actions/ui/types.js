@@ -1,0 +1,5 @@
+export default Object.freeze({
+    INITIALIZE:          'INITIALIZE',
+    START_FETCHING_AUTH: 'START_FETCHING_AUTH',
+    STOP_FETCHING_AUTH:  'STOP_FETCHING_AUTH'
+});
