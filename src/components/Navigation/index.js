@@ -1,12 +1,16 @@
-// Coret
+// Core
 import React, { Component } from 'react';
 import { bool, object, func } from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { NavLink } from 'react-router-dom';
 
 // Instruments
 import Styles from './styles';
+import authActions from 'actions/auth';
 import pages from 'routes/pages';
+import { getProfile } from 'selectors/profile';
+import { getAuthenticated } from 'selectors/auth';
 
 class Navigation extends Component {
     static propTypes = {
@@ -40,9 +44,9 @@ class Navigation extends Component {
                     to = { pages.feed }>
                       Feed
                 </NavLink>,
-                <a key = '2' onClick = { this.logout }>
+                <button key = '2' onClick = { this.logout }>
                       Log Out
-                </a>
+                </button>
             ]
             : [
                 <NavLink
@@ -72,8 +76,12 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = ({ auth, profile }) => ({
-    authenticated: auth.get('authenticated'),
-    profile:       profile.toJS()
+    authenticated: getAuthenticated(auth),
+    profile:       getProfile(profile)
 });
 
-export default connect(mapStateToProps)(Navigation);
+const mapDispatchToProps = (dispatch) => ({
+    logout: bindActionCreators(authActions.logout, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

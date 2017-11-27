@@ -5,7 +5,8 @@ export default combineForms(
     {
         login: {
             email:    '',
-            password: ''
+            password: '',
+            remember: false
         },
         signup: {
             firstName: '',
@@ -13,6 +14,17 @@ export default combineForms(
             email:     '',
             password:  '',
             invite:    ''
+        },
+        user: {
+            profile: {
+                firstName: '',
+                lastName:  '',
+                avatar:    []
+            },
+            password: {
+                oldPassword: '',
+                newPassword: ''
+            }
         }
     },
     'forms'

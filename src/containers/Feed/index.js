@@ -1,6 +1,12 @@
 // Core
 import React, { Component } from 'react';
+import { bool, array, object } from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// Instruments
+import feedActions from 'actions/feed';
+import { getPosts } from 'selectors/feed';
 
 // Components
 import Spinner from 'components/Spinner';
@@ -9,19 +15,34 @@ import Catcher from 'components/Catcher';
 import Wall from 'components/Wall';
 
 class Feed extends Component {
+    static propTypes = {
+        actions:      object.isRequired,
+        feedFetching: bool.isRequired,
+        posts:        array.isRequired,
+        profile:      object.isRequired
+    };
+
     render () {
+        const { feedFetching, profile, posts, actions } = this.props;
+
         return [
-            <Spinner spin key = '0' />,
+            <Spinner key = '0' spin = { feedFetching } />,
             <Navigation key = '1' />,
             <Catcher key = '2'>
-                <Wall posts = { [] } />
+                <Wall actions = { actions } posts = { posts } profile = { profile } />
             </Catcher>
         ];
     }
 }
 
-const mapStateToProps = ({ profile }) => ({
-    profile: profile.toJS()
+const mapStateToProps = ({ ui, profile, feed }) => ({
+    feedFetching: ui.get('feedFetching'),
+    profile:      profile.toJS(),
+    posts:        getPosts(feed)
 });
 
-export default connect(mapStateToProps)(Feed);
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(feedActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);

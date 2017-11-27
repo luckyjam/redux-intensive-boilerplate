@@ -55,6 +55,19 @@
         &:focus::placeholder {
             color: lighten($paletteColor15, 50%);
         }
+
+        &[type='checkbox'] {
+            margin: 0 10px;
+            width: auto;
+        }
+    }
+
+    label {
+        display: flex;
+        justify-content: center;
+        color: $paletteColor8;
+        align-items: center;
+        user-select: none;
     }
 
     button {
@@ -69,7 +82,7 @@
 
     .loginSubmit,
     .profileSubmit {
-        transition: background-color .2s ease-out, border-color .2s ease-out;
+        transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
         border: 1px solid $paletteColor6;
         background-color: $paletteColor6;
         font-size: 12px;
@@ -94,7 +107,7 @@
     }
 
     .error {
-        transition: box-shadow .2s ease-out;
+        transition: box-shadow 0.2s ease-out;
         box-shadow: 0 0 1px 1px $paletteColor25;
     }
 
@@ -116,7 +129,7 @@
             left: -30px;
             width: 110px;
             margin-top: 10px;
-            transition: color .2s ease-out;
+            transition: color 0.2s ease-out;
             color: $paletteColor5;
             font-size: 10px;
             cursor: pointer;
@@ -129,7 +142,7 @@
 
     a {
         margin-top: 40px;
-        transition: color .2s ease-out;
+        transition: color 0.2s ease-out;
         color: $paletteColor23;
         font-size: 14px;
         text-decoration: none;

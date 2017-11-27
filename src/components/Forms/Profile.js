@@ -37,7 +37,7 @@ export default class Profile extends Component {
         return profileEditing ? (
             <span
                 className = { Styles.cancelUpdate }
-                onClick = { () => actions.stopProfileEditing() }>
+                onClick = { () => actions.stopEditingProfile() }>
                 cancel update
             </span>
         ) : null;
@@ -69,29 +69,29 @@ export default class Profile extends Component {
 
     _editProfile (event) {
         const {
-            actions: { startProfileEditing, stopProfileEditing },
+            actions: { startEditingProfile, stopEditingProfile },
             profileEditing
         } = this.props;
 
         event.preventDefault();
 
-        profileEditing ? stopProfileEditing() : startProfileEditing();
+        profileEditing ? stopEditingProfile() : startEditingProfile();
     }
 
     _handleSubmit (user) {
         const {
-            actions: { startProfileEditing, stopProfileEditing, updateProfile },
+            actions: { startEditingProfile, stopEditingProfile, updateProfile },
             profileEditing
         } = this.props;
 
         if (profileEditing) {
             updateProfile(user);
-            stopProfileEditing();
+            stopEditingProfile();
 
             return;
         }
 
-        startProfileEditing();
+        startEditingProfile();
     }
 
     render () {

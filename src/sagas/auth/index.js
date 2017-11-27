@@ -5,6 +5,7 @@ import { takeEvery } from 'redux-saga/effects';
 import types from 'actions/auth/types';
 import { signupWorker } from './workers/signup';
 import { loginWorker } from './workers/login';
+import { logoutWorker } from './workers/logout';
 
 export default Object.freeze({
     * signupWatcher () {
@@ -12,5 +13,8 @@ export default Object.freeze({
     },
     * loginWatcher () {
         yield takeEvery(types.LOGIN, loginWorker);
+    },
+    * logoutWatcher () {
+        yield takeEvery(types.LOGOUT, logoutWorker);
     }
 });

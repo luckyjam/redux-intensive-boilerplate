@@ -35,7 +35,7 @@ export default class Wall extends Component {
     componentDidMount () {
         this.props.actions.fetchPosts();
 
-        this.refetch = setInterval(this.props.actions.fetchPosts, 3000);
+        this.refetch = setInterval(this.props.actions.fetchPosts, 30000);
     }
 
     componentWillUnmount () {
@@ -61,46 +61,28 @@ export default class Wall extends Component {
             }
         } = this.props;
 
-        const posts = postsData.map(
-            ({
-                author,
-                avatar,
-                comment,
-                created,
-                firstName,
-                id,
-                lastName,
-                likes
-            }) => (
-                <CSSTransition
-                    classNames = { {
-                        enter:       Styles.postInStart,
-                        enterActive: Styles.postInEnd,
-                        exit:        Styles.postOutStart,
-                        exitActive:  Styles.postOutEnd
-                    } }
-                    key = { id }
-                    timeout = { { enter: 700, exit: 600 } }>
-                    <Catcher>
-                        <Post
-                            author = { author }
-                            avatar = { avatar }
-                            comment = { comment }
-                            created = { created }
-                            deletePost = { actions.deletePost }
-                            firstName = { firstName }
-                            id = { id }
-                            lastName = { lastName }
-                            likePost = { actions.likePost }
-                            likes = { likes }
-                            userFirstName = { userFirstName }
-                            userId = { userId }
-                            userLastName = { userLastName }
-                        />
-                    </Catcher>
-                </CSSTransition>
-            )
-        );
+        const posts = postsData.map((props) => (
+            <CSSTransition
+                classNames = { {
+                    enter:       Styles.postInStart,
+                    enterActive: Styles.postInEnd,
+                    exit:        Styles.postOutStart,
+                    exitActive:  Styles.postOutEnd
+                } }
+                key = { props.id }
+                timeout = { { enter: 700, exit: 600 } }>
+                <Catcher>
+                    <Post
+                        { ...props }
+                        deletePost = { actions.deletePost }
+                        likePost = { actions.likePost }
+                        userFirstName = { userFirstName }
+                        userId = { userId }
+                        userLastName = { userLastName }
+                    />
+                </Catcher>
+            </CSSTransition>
+        ));
 
         return (
             <section className = { Styles.wall }>

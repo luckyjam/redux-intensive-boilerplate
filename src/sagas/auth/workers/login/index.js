@@ -8,7 +8,9 @@ import authActions from 'actions/auth';
 import profileActions from 'actions/profile';
 import { api } from 'instruments/api';
 
-export function* loginWorker ({ payload: { email, password, token }}) {
+export function* loginWorker ({
+    payload: { email, password, token, remember }
+}) {
     try {
         yield put(uiActions.startFetchingAuth());
 
@@ -43,7 +45,10 @@ export function* loginWorker ({ payload: { email, password, token }}) {
             throw new Error(message);
         }
 
-        localStorage.setItem('token', profile.token);
+        if (remember) {
+            localStorage.setItem('token', profile.token);
+        }
+
         yield put(authActions.loginSuccess());
         yield put(profileActions.fillUserProfile(profile));
 

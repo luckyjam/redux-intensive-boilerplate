@@ -1,7 +1,7 @@
 // Core
 import React, { Component } from 'react';
 import { func, bool } from 'prop-types';
-import { Form, Errors } from 'react-redux-form';
+import { Form, Errors, Control } from 'react-redux-form';
 import cx from 'classnames';
 
 // Instruments
@@ -24,7 +24,6 @@ export default class LoginForm extends Component {
     }
 
     _handleSubmit (user) {
-        console.log('•λ•', user);
         this.props.login(user);
     }
 
@@ -84,6 +83,14 @@ export default class LoginForm extends Component {
                     placeholder = 'Password'
                     type = 'password'
                 />
+                <label>
+                    <Control.checkbox
+                        id = 'forms.login.remember'
+                        model = 'forms.login.remember'
+                        type = 'checkbox'
+                    />
+                    Remember me?
+                </label>
                 <button
                     className = { buttonStyle }
                     disabled = { authFetching }
