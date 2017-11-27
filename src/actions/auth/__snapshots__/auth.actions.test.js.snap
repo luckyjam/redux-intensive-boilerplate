@@ -18,7 +18,8 @@ Object {
 
 exports[`auth actions: 'loginFail' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": "message",
+  "error": true,
+  "payload": "error!",
   "type": "LOGIN_FAIL",
 }
 `;
@@ -37,7 +38,8 @@ Object {
 
 exports[`auth actions: 'logoutFail' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": "message",
+  "error": true,
+  "payload": "error!",
   "type": "LOGOUT_FAIL",
 }
 `;
@@ -66,7 +68,8 @@ Object {
 
 exports[`auth actions: 'signupFail' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": "message",
+  "error": true,
+  "payload": "error!",
   "type": "SIGNUP_FAIL",
 }
 `;

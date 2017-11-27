@@ -27,10 +27,10 @@ export function* likePostWorker ({ payload: postId }) {
 
         const userId = yield select((state) => state.profile.get('id'));
 
-        yield put(feedActions.likePostSuccess(postId, userId));
-        yield put(uiActions.stopFetchingFeed());
+        yield put(feedActions.likePostSuccess({ postId, userId }));
     } catch ({ message }) {
         yield put(feedActions.likePostFail(message));
+    } finally {
         yield put(uiActions.stopFetchingFeed());
     }
 }

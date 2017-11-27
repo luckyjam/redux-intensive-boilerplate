@@ -6,6 +6,9 @@ export default {
         type:    types.FILL_PROFILE,
         payload: user
     }),
+    clearProfile: () => ({
+        type: types.CLEAR_PROFILE
+    }),
     updateProfile: (user) => ({
         type:    types.UPDATE_PROFILE,
         payload: user
@@ -14,9 +17,10 @@ export default {
         type:    types.UPDATE_PROFILE_SUCCESS,
         payload: user
     }),
-    updateProfileFail: (message) => ({
+    updateProfileFail: (error) => ({
         type:    types.UPDATE_PROFILE_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     }),
     updateAvatar: (avatar) => ({
         type:    types.UPDATE_AVATAR,
@@ -26,8 +30,9 @@ export default {
         type:    types.UPDATE_AVATAR_SUCCESS,
         payload: url
     }),
-    updateAvatarFail: (message) => ({
+    updateAvatarFail: (error) => ({
         type:    types.UPDATE_AVATAR_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     })
 };

@@ -32,9 +32,8 @@ class Signup extends Component {
     }
 }
 
-const mapStateToProps = ({ auth, ui }) => ({
-    authenticated: auth.get('authenticated'),
-    authFetching:  ui.get('authFetching')
+const mapStateToProps = ({ ui }) => ({
+    authFetching: ui.get('authFetching')
 });
 
 const mapDispatchToProps = (dispatch) => ({

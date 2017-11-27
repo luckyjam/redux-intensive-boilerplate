@@ -1,5 +1,4 @@
 // Core
-import { delay } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { actions } from 'react-redux-form';
 import { replace } from 'react-router-redux';
@@ -39,17 +38,15 @@ export function* signupWorker ({
             throw new Error(message);
         }
 
-        yield delay(2000);
-
         localStorage.setItem('token', profile.token);
 
         yield put(authActions.signupSuccess());
         yield put(profileActions.fillProfile(profile));
         yield put(replace('/redux/feed'));
         yield put(actions.reset('forms.signup'));
-        yield put(uiActions.stopFetchingAuth());
     } catch ({ message }) {
         yield put(authActions.signupFail(message));
+    } finally {
         yield put(uiActions.stopFetchingAuth());
     }
 }

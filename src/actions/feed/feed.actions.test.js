@@ -9,7 +9,7 @@ const post = {
 };
 const posts = [post];
 const comment = 'hello';
-const message = 'message';
+const error = 'error!';
 
 describe('feed actions:', () => {
     test(`'fetchPosts' action creator should produce a corresponding action`, () => {
@@ -19,7 +19,7 @@ describe('feed actions:', () => {
         expect(actions.fetchPostsSuccess(posts)).toMatchSnapshot();
     });
     test(`'fetchPostsFail' action creator should produce a corresponding action`, () => {
-        expect(actions.fetchPostsFail(message)).toMatchSnapshot();
+        expect(actions.fetchPostsFail(error)).toMatchSnapshot();
     });
     test(`'createPost' action creator should produce a corresponding action`, () => {
         expect(actions.createPost(comment)).toMatchSnapshot();
@@ -28,7 +28,7 @@ describe('feed actions:', () => {
         expect(actions.createPostSuccess(post)).toMatchSnapshot();
     });
     test(`'createPostFail' action creator should produce a corresponding action`, () => {
-        expect(actions.createPostFail(message)).toMatchSnapshot();
+        expect(actions.createPostFail(error)).toMatchSnapshot();
     });
     test(`'deletePost' action creator should produce a corresponding action`, () => {
         expect(actions.deletePost(postId)).toMatchSnapshot();
@@ -37,7 +37,7 @@ describe('feed actions:', () => {
         expect(actions.deletePostSuccess(postId)).toMatchSnapshot();
     });
     test(`'deletePostFail' action creator should produce a corresponding action`, () => {
-        expect(actions.deletePostFail(message)).toMatchSnapshot();
+        expect(actions.deletePostFail(error)).toMatchSnapshot();
     });
     test(`'likePost' action creator should produce a corresponding action`, () => {
         expect(actions.likePost(postId)).toMatchSnapshot();
@@ -46,6 +46,6 @@ describe('feed actions:', () => {
         expect(actions.likePostSuccess(postId, userId)).toMatchSnapshot();
     });
     test(`'likePostFail' action creator should produce a corresponding action`, () => {
-        expect(actions.likePostFail(message)).toMatchSnapshot();
+        expect(actions.likePostFail(error)).toMatchSnapshot();
     });
 });

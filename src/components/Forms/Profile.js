@@ -161,7 +161,7 @@ export default class Profile extends Component {
                 />
                 {submitButton}
                 <i>{cancelUpdateButton}</i>
-                <Link to = { pages['new-password'] }>change password →</Link>
+                <Link to = { pages.newPassword }>change password →</Link>
             </Form>
         );
     }

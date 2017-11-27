@@ -13,7 +13,7 @@ const user = {
 };
 
 const avatar = new Blob();
-const message = 'message';
+const error = 'error!';
 const url = 'https://test.image.io';
 
 describe('profile actions:', () => {
@@ -36,9 +36,10 @@ describe('profile actions:', () => {
         });
     });
     test(`'updateProfileFail' action creator should produce a corresponding action`, () => {
-        expect(actions.updateProfileFail(message)).toEqual({
+        expect(actions.updateProfileFail(error)).toEqual({
             type:    'UPDATE_PROFILE_FAIL',
-            payload: message
+            payload: error,
+            error:   true
         });
     });
     test(`'updateAvatar' action creator should produce a corresponding action`, () => {
@@ -54,9 +55,10 @@ describe('profile actions:', () => {
         });
     });
     test(`'updateAvatarFail' action creator should produce a corresponding action`, () => {
-        expect(actions.updateAvatarFail(message)).toEqual({
+        expect(actions.updateAvatarFail(error)).toEqual({
             type:    'UPDATE_AVATAR_FAIL',
-            payload: message
+            payload: error,
+            error:   true
         });
     });
 });

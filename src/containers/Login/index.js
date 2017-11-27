@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 
 // Instruments
 import authActions from 'actions/auth';
-import { getAuthenticated } from 'selectors/auth';
 import { getAuthFetching } from 'selectors/ui';
 
 // Components
@@ -34,9 +33,8 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = ({ auth, ui }) => ({
-    authenticated: getAuthenticated(auth),
-    authFetching:  getAuthFetching(ui)
+const mapStateToProps = ({ ui }) => ({
+    authFetching: getAuthFetching(ui)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -14,27 +14,25 @@ export function* fetchPostsWorker () {
 
         const token = yield select((state) => state.profile.get('token'));
 
-        const response = yield call(fetch, `${api}/feed?size=100`, {
+        const response = yield call(fetch, `${api}/feed`, {
             method:  'GET',
             headers: {
                 Authorization: token
             }
         });
 
-        const { data: posts } = yield call([response, response.json]);
+        const { data: posts, message } = yield call([response, response.json]);
 
         if (response.status !== 200) {
-            const { message } = yield call([response, response.json]);
-
             throw new Error(message);
         }
 
         const normalizedPosts = normalize(posts, [post]);
 
         yield put(feedActions.fetchPostsSuccess(normalizedPosts));
-        yield put(uiActions.stopFetchingFeed());
     } catch ({ message }) {
         yield put(feedActions.fetchPostsFail(message));
+    } finally {
         yield put(uiActions.stopFetchingFeed());
     }
 }

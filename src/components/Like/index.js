@@ -11,6 +11,7 @@ export default class Like extends Component {
         likePost: func.isRequired,
         likes:    arrayOf(
             shape({
+                id:        string.isRequired,
                 firstName: string.isRequired,
                 lastName:  string.isRequired
             }).isRequired

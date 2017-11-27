@@ -22,6 +22,7 @@ export default class Post extends Component {
         likePost:   func.isRequired,
         likes:      arrayOf(
             shape({
+                id:        string.isRequired,
                 firstName: string.isRequired,
                 lastName:  string.isRequired
             }).isRequired
@@ -72,6 +73,8 @@ export default class Post extends Component {
         } = this.props;
 
         const cross = this.getCross();
+
+        console.log('•λ•', likes);
 
         return (
             <section className = { Styles.post }>

@@ -37,9 +37,9 @@ export function* updateAvatarWorker ({ payload: [avatar] }) {
         yield delay(1000);
         yield put(profileActions.updateAvatarSuccess(newAvatar));
         yield put(actions.reset('forms.user.profile.avatar'));
-        yield put(uiActions.stopFetchingAvatar());
     } catch ({ message }) {
         yield put(profileActions.updateAvatarFail(message));
+    } finally {
         yield put(uiActions.stopFetchingAvatar());
     }
 }

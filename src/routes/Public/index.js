@@ -13,8 +13,8 @@ export default class Public extends Component {
     render () {
         return (
             <Switch>
-                <Route component = { Login } path = { pages.login } />
-                <Route component = { Signup } path = { pages['sign-up'] } />
+                <Route exact component = { Login } path = { pages.login } />
+                <Route exact component = { Signup } path = { pages.signUp } />
                 <Redirect to = { pages.login } />
             </Switch>
         );

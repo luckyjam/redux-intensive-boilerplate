@@ -48,9 +48,9 @@ export function* updateProfileWorker ({
         yield put(profileActions.updateProfileSuccess(user));
         yield put(actions.reset('forms.user.password.oldPassword'));
         yield put(actions.reset('forms.user.password.newPassword'));
-        yield put(uiActions.stopFetchingProfile());
     } catch ({ message }) {
         yield put(profileActions.updateProfileFail(message));
+    } finally {
         yield put(uiActions.stopFetchingProfile());
     }
 }

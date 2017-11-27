@@ -11,7 +11,7 @@ const user = {
     lastName:  '',
     email:     ''
 };
-const message = 'message';
+const error = 'error!';
 
 describe('auth actions:', () => {
     test(`'login' action creator should produce a corresponding action`, () => {
@@ -21,7 +21,7 @@ describe('auth actions:', () => {
         expect(actions.loginSuccess()).toMatchSnapshot();
     });
     test(`'loginFail' action creator should produce a corresponding action`, () => {
-        expect(actions.loginFail(message)).toMatchSnapshot();
+        expect(actions.loginFail(error)).toMatchSnapshot();
     });
     test(`'signup' action creator should produce a corresponding action`, () => {
         expect(actions.signup(user)).toMatchSnapshot();
@@ -30,7 +30,7 @@ describe('auth actions:', () => {
         expect(actions.signupSuccess()).toMatchSnapshot();
     });
     test(`'signupFail' action creator should produce a corresponding action`, () => {
-        expect(actions.signupFail(message)).toMatchSnapshot();
+        expect(actions.signupFail(error)).toMatchSnapshot();
     });
     test(`'logout' action creator should produce a corresponding action`, () => {
         expect(actions.logout()).toMatchSnapshot();
@@ -39,6 +39,6 @@ describe('auth actions:', () => {
         expect(actions.logoutSuccess()).toMatchSnapshot();
     });
     test(`'logoutFail' action creator should produce a corresponding action`, () => {
-        expect(actions.logoutFail(message)).toMatchSnapshot();
+        expect(actions.logoutFail(error)).toMatchSnapshot();
     });
 });

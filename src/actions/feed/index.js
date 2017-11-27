@@ -9,9 +9,10 @@ export default {
         type:    types.FETCH_POSTS_SUCCESS,
         payload: posts
     }),
-    fetchPostsFail: (message) => ({
+    fetchPostsFail: (error) => ({
         type:    types.FETCH_POSTS_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     }),
     createPost: (comment) => ({
         type:    types.CREATE_POST,
@@ -21,9 +22,10 @@ export default {
         type:    types.CREATE_POST_SUCCESS,
         payload: post
     }),
-    createPostFail: (message) => ({
+    createPostFail: (error) => ({
         type:    types.CREATE_POST_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     }),
     deletePost: (id) => ({
         type:    types.DELETE_POST,
@@ -33,23 +35,22 @@ export default {
         type:    types.DELETE_POST_SUCCESS,
         payload: id
     }),
-    deletePostFail: (message) => ({
+    deletePostFail: (error) => ({
         type:    types.DELETE_POST_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     }),
     likePost: (postId) => ({
         type:    types.LIKE_POST,
         payload: postId
     }),
-    likePostSuccess: (postId, userId) => ({
+    likePostSuccess: (likedPostIds) => ({
         type:    types.LIKE_POST_SUCCESS,
-        payload: {
-            postId,
-            userId
-        }
+        payload: likedPostIds
     }),
-    likePostFail: (message) => ({
+    likePostFail: (error) => ({
         type:    types.LIKE_POST_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     })
 };

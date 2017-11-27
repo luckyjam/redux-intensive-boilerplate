@@ -13,9 +13,6 @@ import { saga } from 'sagas';
 const dev = process.env.NODE_ENV === 'development'; // eslint-disable-line
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
-const middleware = [];
-const composeEnhancers = dev && devtools ? devtools : compose;
-
 const logger = createLogger({
     duration:  true,
     collapsed: true,
@@ -31,13 +28,14 @@ const logger = createLogger({
 const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 
-if (dev) {
-    middleware.push(logger);
-    middleware.push(thunk);
-}
+const middleware = [thunk, routerMiddleware(history)];
+const composeEnhancers = dev && devtools ? devtools : compose;
 
 middleware.push(sagaMiddleware);
-middleware.push(routerMiddleware(history));
+
+if (dev) {
+    middleware.push(logger);
+}
 
 export { history };
 export default createStore(

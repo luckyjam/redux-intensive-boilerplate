@@ -53,9 +53,9 @@ export function* loginWorker ({ payload: { email, password, token }}) {
         yield put(actions.change('forms.user.profile.firstName', firstName));
         yield put(actions.change('forms.user.profile.lastName', lastName));
         yield put(actions.reset('forms.login'));
-        yield put(uiActions.stopFetchingAuth());
     } catch ({ message }) {
         yield put(authActions.loginFail(message));
+    } finally {
         yield put(uiActions.stopFetchingAuth());
     }
 }

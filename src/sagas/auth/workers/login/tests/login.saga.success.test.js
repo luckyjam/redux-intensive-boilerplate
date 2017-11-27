@@ -27,11 +27,15 @@ const url = 'https://lab.lectrum.io/redux/api/user/login';
 
 /* eslint-disable no-undef */
 global.fetch = jest.fn(() => Promise.resolve(fetchResponse));
-global.localStorage = {
-    setItem (item) {
-        this.item = item;
-    }
-};
+global.localStorage = (() => {
+    const storage = {};
+
+    return {
+        setItem:    jest.fn((key, value) => storage[key] = value),
+        getItem:    jest.fn((key) => storage[key]),
+        removeItem: jest.fn((key) => delete storage[key])
+    };
+})();
 /* eslint-enable no-undef */
 
 const saga = loginWorker(loginEmail);

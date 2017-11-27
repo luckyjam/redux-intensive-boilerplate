@@ -26,9 +26,9 @@ export function* deletePostWorker ({ payload: id }) {
         }
 
         yield put(feedActions.deletePostSuccess(id));
-        yield put(uiActions.stopFetchingFeed());
     } catch ({ message }) {
         yield put(feedActions.deletePostFail(message));
+    } finally {
         yield put(uiActions.stopFetchingFeed());
     }
 }

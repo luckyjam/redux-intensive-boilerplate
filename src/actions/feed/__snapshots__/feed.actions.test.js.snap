@@ -9,7 +9,8 @@ Object {
 
 exports[`feed actions: 'createPostFail' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": "message",
+  "error": true,
+  "payload": "error!",
   "type": "CREATE_POST_FAIL",
 }
 `;
@@ -33,7 +34,8 @@ Object {
 
 exports[`feed actions: 'deletePostFail' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": "message",
+  "error": true,
+  "payload": "error!",
   "type": "DELETE_POST_FAIL",
 }
 `;
@@ -53,7 +55,8 @@ Object {
 
 exports[`feed actions: 'fetchPostsFail' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": "message",
+  "error": true,
+  "payload": "error!",
   "type": "FETCH_POSTS_FAIL",
 }
 `;
@@ -79,17 +82,15 @@ Object {
 
 exports[`feed actions: 'likePostFail' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": "message",
+  "error": true,
+  "payload": "error!",
   "type": "LIKE_POST_FAIL",
 }
 `;
 
 exports[`feed actions: 'likePostSuccess' action creator should produce a corresponding action 1`] = `
 Object {
-  "payload": Object {
-    "postId": "123",
-    "userId": "456",
-  },
+  "payload": "123",
   "type": "LIKE_POST_SUCCESS",
 }
 `;

@@ -32,11 +32,17 @@ class Routes extends Component {
     };
 
     componentDidMount () {
-        const { authenticated, history, location } = this.props;
+        const {
+            authenticated,
+            history,
+            location,
+            login,
+            initialize
+        } = this.props;
 
         const token = localStorage.getItem('token');
 
-        token ? this.props.login({ token }) : this.props.initialize();
+        token ? login({ token }) : initialize();
 
         if (authenticated) {
             if (location.pathname === pages.profile) {
@@ -50,10 +56,11 @@ class Routes extends Component {
         authenticated,
         initialized,
         location,
-        history
+        history,
+        initialize
     }) {
         if (authenticated && !initialized) {
-            this.props.initialize();
+            initialize();
         }
 
         if (authenticated) {
@@ -86,8 +93,7 @@ const mapStateToProps = ({ auth, ui }) => ({
 const { login } = authActions;
 const { initialize } = uiActions;
 
-const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({ login, initialize }, dispatch)
-});
+const mapDispatchToProps = (dispatch) =>
+    bindActionCreators({ login, initialize }, dispatch);
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes));

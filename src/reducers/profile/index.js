@@ -21,6 +21,9 @@ export default (state = initialState, { type, payload }) => {
         case types.UPDATE_PROFILE_SUCCESS:
             return state.merge(payload);
 
+        case types.CLEAR_PROFILE:
+            return initialState;
+
         case types.UPDATE_AVATAR_SUCCESS:
             return state.set('avatar', payload);
 

@@ -37,9 +37,9 @@ export function* createPostWorker ({ payload: comment }) {
         const normalizedPost = normalize(denormalizedPost, post);
 
         yield put(feedActions.createPostSuccess(normalizedPost));
-        yield put(uiActions.stopFetchingFeed());
     } catch ({ message }) {
         yield put(feedActions.createPostFail(message));
+    } finally {
         yield put(uiActions.stopFetchingFeed());
     }
 }

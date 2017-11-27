@@ -9,9 +9,10 @@ export default {
     loginSuccess: () => ({
         type: types.LOGIN_SUCCESS
     }),
-    loginFail: (message) => ({
+    loginFail: (error) => ({
         type:    types.LOGIN_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     }),
     signup: (user) => ({
         type:    types.SIGNUP,
@@ -20,9 +21,10 @@ export default {
     signupSuccess: () => ({
         type: types.SIGNUP_SUCCESS
     }),
-    signupFail: (message) => ({
+    signupFail: (error) => ({
         type:    types.SIGNUP_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     }),
     logout: () => ({
         type: types.LOGOUT
@@ -30,8 +32,9 @@ export default {
     logoutSuccess: () => ({
         type: types.LOGOUT_SUCCESS
     }),
-    logoutFail: (message) => ({
+    logoutFail: (error) => ({
         type:    types.LOGOUT_FAIL,
-        payload: message
+        payload: error,
+        error:   true
     })
 };

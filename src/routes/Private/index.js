@@ -14,9 +14,9 @@ export default class Private extends Component {
     render () {
         return (
             <Switch>
-                <Route component = { Feed } path = { pages.feed } />
-                <Route component = { Profile } path = { pages.profile } />
-                <Route component = { NewPassword } path = { pages['new-password'] } />
+                <Route exact component = { Feed } path = { pages.feed } />
+                <Route exact component = { Profile } path = { pages.profile } />
+                <Route exact component = { NewPassword } path = { pages.newPassword } />
                 <Redirect to = { pages.feed } />
             </Switch>
         );

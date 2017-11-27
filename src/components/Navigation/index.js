@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 // Instruments
 import Styles from './styles';
+import pages from 'routes/pages';
 import authActions from 'actions/auth';
 import { getAuthenticated } from 'selectors/auth';
 import { getProfile } from 'selectors/profile';
@@ -33,11 +34,14 @@ class Navigation extends Component {
                 <NavLink
                     activeClassName = { Styles.active }
                     key = '0'
-                    to = '/redux/profile'>
+                    to = { pages.profile }>
                     <img src = { avatar } />
                     {firstName}
                 </NavLink>,
-                <NavLink activeClassName = { Styles.active } key = '1' to = '/redux/feed'>
+                <NavLink
+                    activeClassName = { Styles.active }
+                    key = '1'
+                    to = { pages.feed }>
                       Feed
                 </NavLink>,
                 <button key = '2' onClick = { this.logout }>
@@ -45,13 +49,16 @@ class Navigation extends Component {
                 </button>
             ]
             : [
-                <NavLink activeClassName = { Styles.active } key = '0' to = '/redux/login'>
+                <NavLink
+                    activeClassName = { Styles.active }
+                    key = '0'
+                    to = { pages.login }>
                       Log In
                 </NavLink>,
                 <NavLink
                     activeClassName = { Styles.active }
                     key = '1'
-                    to = '/redux/sign-up'>
+                    to = { pages.signUp }>
                       Sign Up
                 </NavLink>
             ];
@@ -68,10 +75,9 @@ class Navigation extends Component {
     }
 }
 
-const mapStateToProps = ({ auth, profile, router }) => ({
+const mapStateToProps = ({ auth, profile }) => ({
     authenticated: getAuthenticated(auth),
-    profile:       getProfile(profile),
-    router
+    profile:       getProfile(profile)
 });
 
 const mapDispatchToProps = (dispatch) => ({

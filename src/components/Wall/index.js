@@ -35,7 +35,7 @@ export default class Wall extends Component {
     componentDidMount () {
         this.props.actions.fetchPosts();
 
-        this.refetch = setInterval(this.props.actions.fetchPosts, 3000);
+        this.refetch = setInterval(this.props.actions.fetchPosts, 30000);
     }
 
     componentWillUnmount () {
