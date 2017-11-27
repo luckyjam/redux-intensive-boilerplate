@@ -2,7 +2,7 @@
 import { EventEmitter } from 'events';
 
 // Instruments
-import dispatcher from 'Flux/dispatcher';
+import dispatcher from 'flux/dispatcher';
 
 export default new class MagicBookStore extends EventEmitter {
     constructor () {
