@@ -1,21 +1,15 @@
+// Core
 import React, { Component } from 'react';
 
-import Styles from './styles';
+// Instruments
+import styles from './styles';
 
 export default class Loading extends Component {
     render () {
         return (
-            <section className = { Styles.loading }>
-                <div className = { Styles['container--center'] }>
-                    <div className = { Styles['dancing-pug'] }>
-                        <ul>
-                            <li className = { Styles.ear } />
-                            <li className = { Styles.ear } />
-                            <li className = { Styles.eye } />
-                            <li className = { Styles.eye } />
-                            <li />
-                        </ul>
-                    </div>
+            <section className = { styles.loading }>
+                <div>
+                    <h1>Loading...</h1>
                 </div>
             </section>
         );
