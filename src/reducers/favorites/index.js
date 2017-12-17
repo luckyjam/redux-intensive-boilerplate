@@ -5,18 +5,17 @@ import { Map, List, fromJS } from 'immutable';
 import types from 'actions/movies/types';
 
 const initialState = Map({
-    topMovies: List(),
-    filter:    'top_rated'
+    favorites: List()
 });
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
-        case types.FETCH_TOP_MOVIES:
-            return state.set('filter', payload);
+        case types.ADD_TO_FAVORITES_SUCCESS:
 
-        case types.FETCH_TOP_MOVIES_SUCCESS:
-            return state.set('topMovies', fromJS(payload));
+            return state.set('favorites', fromJS(payload));
+        case types.GET_FAVORITES_SUCCESS:
 
+            return state.set('favorites', fromJS(payload));
         default:
             return state;
     }

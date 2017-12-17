@@ -7,13 +7,15 @@ import pages from 'routes/pages';
 
 // Components
 import Movies from 'containers/Movies';
+import MovieDetails from 'containers/MovieDetails';
 
 export default class Public extends Component {
     render () {
         return (
             <Switch>
-                <Route exact component = { Movies } path = { pages.movies } />
-                <Redirect to = { pages.movies } />
+                <Route exact component = { Movies } path = { `${pages.movies}/:filter` } />
+                <Route exact component = { MovieDetails } path = '/movies/details/:movieId' />
+                <Redirect to = { `${pages.movies}/top_rated` } />
             </Switch>
         );
     }

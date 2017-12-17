@@ -6,6 +6,7 @@ import { object, array } from 'prop-types';
 import Styles from './styles';
 
 // Components
+import Movie from 'components/Movie';
 
 export default class MoviesList extends Component {
 
@@ -14,24 +15,35 @@ export default class MoviesList extends Component {
         topMovies: array.isRequired
     }
 
+    constructor () {
+        super();
+        this.getNowPlaying = ::this._getNowPlaying;
+    }
+
     componentDidMount () {
-        this.props.actions.fetchTopMovies();
+        const { filter } = this.props;
+
+        this.props.actions.fetchTopMovies(filter);
+    }
+
+    _getNowPlaying () {
+
     }
     render () {
-        console.log('props: ', this.props);
 
-        const { topMovies } = this.props;
+        const { topMovies, actions } = this.props;
+        const movies = topMovies.map((movie) => (
 
-        console.log('data: ', topMovies);
-
-
-        // const movies = topMovies.map((movie) => (
-        //     <p key = { movie.id }> Movie: { movie.id }</p>
-        // ));
+            <Movie
+                actions = { actions }
+                key = { movie.id }
+                movieData = { movie }
+            />
+        ));
 
         return (
-            <section className = { Styles.movieslist }>
-                <h1>Movies</h1>
+            <section className = { Styles.moviesList }>
+                {movies}
             </section>
         );
     }

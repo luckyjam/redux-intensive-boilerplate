@@ -1,0 +1,51 @@
+@import '../../theme/palette';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.moviesList {
+    display: grid;
+    margin: 20px;
+    background-color: $paletteColor2;
+    font-family: 'Roboto', sans-serif;
+    grid-gap: 20px;
+    grid-auto-rows: minmax(125px, auto);
+}
+
+@media screen and (min-width: 65em) {
+    .moviesList {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+
+    button {
+        flex: 1 1 100%;
+        margin: 10px;
+        padding: 10px;
+        overflow: hidden;
+        border-width: 0;
+        border-radius: 2px;
+        outline: none;
+        background-color: $buttonGreen;
+        box-shadow: 0 1px 4px rgba($paletteColor1, .6);
+        color: $paletteColor2;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $buttonGreenLight;
+        }
+
+        &:active {
+            background-color: $buttonPink;
+        }
+    }
+}

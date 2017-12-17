@@ -7,12 +7,13 @@ import { Switch, withRouter } from 'react-router';
 
 // Instruments
 import uiActions from 'actions/ui';
+// import pages from './pages';
 
 // Routing
 import Public from './Public';
 
 // Components
-import Loading from 'components/Loading';
+// import Loading from 'components/Loading';
 
 class Routes extends Component {
     static propTypes = {
@@ -22,21 +23,26 @@ class Routes extends Component {
         location:    object.isRequired
     }
 
-    componentDidMount () {
-        const { initialize } = this.props;
+    // componentDidMount () {
+    //     const { initialized, initialize } = this.props;
+    //     console.log('initialized', initialized);
+    //     initialize();
+    // }
 
-        initialize();
-    }
+    // componentWillReceiveProps ({ initialized, history }) {
+    //     console.log('initialized', initialized);
+    //     if (!initialized) {
+    //         this.props.initialize();
+    //         history.replace(pages.movies);
+    //     }
+    // }
 
     render () {
-        const { initialized } = this.props;
 
-        return initialized ? (
+        return (
             <Switch>
                 <Public />
             </Switch>
-        ) : (
-            <Loading />
         );
     }
 }

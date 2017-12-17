@@ -1,9 +1,9 @@
 // Core
 import { createSelector } from 'reselect';
 
-const topMoviesMap = (state) => state.get('topMovies');
+const topMoviesList = (state) => state.get('topMovies');
 
 export const getTopMovies = createSelector(
-    topMoviesMap,
+    topMoviesList,
     (topMovies) => topMovies.toJS()
 );
