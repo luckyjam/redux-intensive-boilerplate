@@ -18,7 +18,7 @@ class MovieDetails extends Component {
     };
 
     render () {
-        const { movieDetails, actions } = this.props;
+        const { movieDetails, actions, history } = this.props;
         const { movieId } = this.props.match.params;
 
         return (
@@ -26,6 +26,7 @@ class MovieDetails extends Component {
                 actions = { actions }
                 movieDetails = { movieDetails }
                 movieId = { movieId }
+                history = { history }
             />
         );
     }

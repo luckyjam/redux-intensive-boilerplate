@@ -15,6 +15,9 @@ export default (state = initialState, { type, payload }) => {
 
             return state.set('movieDetails', fromJS(payload));
 
+        case types.CLEAR_MOVIE_DETAILS:
+            return state.set('movieDetails', Map());
+
         default:
             return state;
     }

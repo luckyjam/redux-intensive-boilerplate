@@ -12,10 +12,24 @@ export default class MovieInfo extends Component {
         movieDetails: object.isRequired,
         movieId:      string.isRequired
     }
+
+    constructor () {
+        super();
+        this.handleClickGoBack = ::this._handleClickGoBack;
+    }
     componentDidMount () {
         const { actions, movieId } = this.props;
 
         actions.fetchMovieDetails(movieId);
+    }
+    componentWillUnmount () {
+        const { actions } = this.props;
+
+        actions.clearMovieDetails();
+    }
+
+    _handleClickGoBack () {
+        this.props.history.goBack();
     }
 
     render () {
@@ -52,6 +66,7 @@ export default class MovieInfo extends Component {
                         <p><strong>User rating:</strong> { `${voteScore}` }</p>
                         <p><strong>Overview:</strong> { overview }</p>
                         <Link to = '/'><button>Back</button></Link>
+                        <button onClick = { this.handleClickGoBack }>Router Back</button>
                     </div>
                 </div>
             </section>

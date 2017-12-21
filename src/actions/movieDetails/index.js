@@ -13,5 +13,8 @@ export default Object.freeze({
     fetchMovieDetailsFail: (message) => ({
         type:    types.FETCH_MOVIE_DETAILS_FAIL,
         payload: message
+    }),
+    clearMovieDetails: () => ({
+        type: types.CLEAR_MOVIE_DETAILS
     })
 });

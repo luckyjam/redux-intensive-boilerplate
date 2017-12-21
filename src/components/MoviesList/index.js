@@ -26,6 +26,11 @@ export default class MoviesList extends Component {
         this.props.actions.fetchTopMovies(filter);
     }
 
+    componentWillReceiveProps ({ filter: nextFilter}) {
+        const { filter } = this.props;
+
+        nextFilter !== filter ? this.props.actions.fetchTopMovies(nextFilter) : filter;
+    }
     _getNowPlaying () {
 
     }
