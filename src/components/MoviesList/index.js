@@ -37,11 +37,12 @@ export default class MoviesList extends Component {
     }
     render () {
 
-        const { topMovies, actions } = this.props;
+        const { topMovies, actions, favorites } = this.props;
         const movies = topMovies.map((movie) => (
 
             <Movie
                 actions = { actions }
+                favorites = { favorites }
                 key = { movie.id }
                 movieData = { movie }
             />

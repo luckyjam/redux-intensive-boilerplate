@@ -17,11 +17,12 @@ import Filter from 'components/Filter';
 class Movies extends Component {
     static propTypes = {
         actions:   object.isRequired,
+        favorites: array.isRequired,
         match:     object.isRequired,
         topMovies: array.isRequired
     }
     render () {
-        const { topMovies, actions } = this.props;
+        const { topMovies, favorites, actions } = this.props;
         const { filter } = this.props.match.params;
 
         return [
@@ -29,6 +30,7 @@ class Movies extends Component {
             <Catcher key = '1'>
                 <MoviesList
                     actions = { actions }
+                    favorites = { favorites }
                     filter = { filter }
                     topMovies = { topMovies }
                 />
@@ -37,8 +39,9 @@ class Movies extends Component {
     }
 }
 
-const mapStateToProps = ({ movies }) => ({
-    topMovies: getTopMovies(movies)
+const mapStateToProps = ({ movies, favorites }) => ({
+    topMovies: getTopMovies(movies),
+    favorites: favorites.get('favorites').toJS()
 });
 
 const mapDispatchToProps = (dispatch) => ({

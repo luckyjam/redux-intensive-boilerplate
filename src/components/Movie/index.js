@@ -24,6 +24,7 @@ export default class Movie extends Component {
         const { actions, movieData } = this.props;
 
         actions.addToFavorites(movieData);
+        actions.getFavorites();
     }
 
     render () {
@@ -35,6 +36,9 @@ export default class Movie extends Component {
             release_date: releaseDate,
             overview
         } = this.props.movieData;
+        const { favorites } = this.props;
+        const isInFavorites = favorites.some(({ id }) => id === movieId);
+        const addToFavoritesButton = isInFavorites ? 'X': (<button onClick = { this.addToFavorites }>Favorite</button>);
 
         return (
             <div className = { Styles.movie }>
@@ -48,7 +52,7 @@ export default class Movie extends Component {
                     <p>{ moment(releaseDate).format('ll') }</p>
                     <p>{ overview }</p>
                     <p>
-                        <button onClick = { this.addToFavorites }>Favorite</button>
+                        { addToFavoritesButton }
                     </p>
                 </div>
             </div>

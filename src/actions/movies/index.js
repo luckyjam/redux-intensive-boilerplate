@@ -22,10 +22,10 @@ export default Object.freeze({
     //     type:    types.ADD_TO_FAVORITES_SUCCESS,
     //     payload: favorites
     // }),
-    // addToFavoritesFail: (message) => ({
-    //     type:    types.ADD_TO_FAVORITES_FAIL,
-    //     payload: message
-    // }),
+    addToFavoritesFail: (message) => ({
+        type:    types.ADD_TO_FAVORITES_FAIL,
+        payload: message
+    }),
     getFavorites: () => ({
         type: types.GET_FAVORITES
     }),

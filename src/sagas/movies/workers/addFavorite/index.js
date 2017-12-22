@@ -17,7 +17,6 @@ export function* addFavoriteWorker ({ payload: movie }) {
         localStorage.setItem('favorites', JSON.stringify(favorites));
         favorites = JSON.parse(localStorage.getItem('favorites'));
 
-        yield put(moviesActions.addToFavoritesSuccess(favorites));
     } catch (error) {
         yield put(moviesActions.addToFavoritesFail(error));
     }

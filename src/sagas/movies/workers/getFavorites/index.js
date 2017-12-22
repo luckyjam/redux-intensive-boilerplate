@@ -8,8 +8,8 @@ import moviesActions from 'actions/movies';
 
 export function* getFavoritesWorker () {
     try {
-
-        const favorites = JSON.parse(localStorage.getItem('favorites'));
+        const favoritesInStorage = localStorage.getItem('favorites');
+        const favorites = favoritesInStorage ? JSON.parse(favoritesInStorage) : [];
 
         yield put(moviesActions.getFavoritesSuccess(favorites));
     } catch (error) {
