@@ -36,6 +36,7 @@ export default class Filter extends Component {
                 <NavLink to = '/movies/top_rated'>Top Rated </NavLink>
                 <NavLink to = '/movies/upcoming'>Upcoming</NavLink>
                 <NavLink to = '/movies/popular'>Popular</NavLink>
+                <NavLink to = '/favorites'>Favorites</NavLink>
                 <p>
                     <button onClick = { this.topRatedFilter }>Top Rated</button>
                     <button onClick = { this.upcomingFilter }>Upcoming</button>

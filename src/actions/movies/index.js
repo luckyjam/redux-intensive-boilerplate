@@ -18,24 +18,24 @@ export default Object.freeze({
         type:    types.ADD_TO_FAVORITES,
         payload: movie
     }),
-    addToFavoritesSuccess: (favorites) => ({
-        type:    types.ADD_TO_FAVORITES_SUCCESS,
-        payload: favorites
-    }),
-    addToFavoritesFail: (message) => ({
-        type:    types.ADD_TO_FAVORITES_FAIL,
-        payload: message
-    }),
+    // addToFavoritesSuccess: (favorites) => ({
+    //     type:    types.ADD_TO_FAVORITES_SUCCESS,
+    //     payload: favorites
+    // }),
+    // addToFavoritesFail: (message) => ({
+    //     type:    types.ADD_TO_FAVORITES_FAIL,
+    //     payload: message
+    // }),
     getFavorites: () => ({
         type: types.GET_FAVORITES
     }),
     getFavoritesSuccess: (favorites) => ({
         type:    types.GET_FAVORITES_SUCCESS,
         payload: favorites
-    }),
-    getFavoritesFail: (message) => ({
-        type:    types.GET_FAVORITES_FAIL,
-        payload: message
     })
+    // getFavoritesFail: (message) => ({
+    //     type:    types.GET_FAVORITES_FAIL,
+    //     payload: message
+    // })
 
 });

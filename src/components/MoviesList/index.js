@@ -1,6 +1,6 @@
 // Core
 import React, { Component } from 'react';
-import { object, array } from 'prop-types';
+import { object, array, string } from 'prop-types';
 
 // Instruments
 import Styles from './styles';
@@ -12,6 +12,7 @@ export default class MoviesList extends Component {
 
     static propTypes = {
         actions:   object.isRequired,
+        filter:    string.isRequired,
         topMovies: array.isRequired
     }
 
@@ -26,7 +27,7 @@ export default class MoviesList extends Component {
         this.props.actions.fetchTopMovies(filter);
     }
 
-    componentWillReceiveProps ({ filter: nextFilter}) {
+    componentWillReceiveProps ({ filter: nextFilter }) {
         const { filter } = this.props;
 
         nextFilter !== filter ? this.props.actions.fetchTopMovies(nextFilter) : filter;

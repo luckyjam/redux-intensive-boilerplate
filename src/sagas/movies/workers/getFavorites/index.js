@@ -13,6 +13,6 @@ export function* getFavoritesWorker () {
 
         yield put(moviesActions.getFavoritesSuccess(favorites));
     } catch (error) {
-        yield put(moviesActions.getFavoritesFail(error));
+        yield console.log('error', error);
     }
 }

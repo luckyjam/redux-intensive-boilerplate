@@ -13,6 +13,7 @@ import MovieInfo from 'components/MovieInfo';
 class MovieDetails extends Component {
     static propTypes = {
         actions:      object.isRequired,
+        history:      object.isRequired,
         match:        object.isRequired,
         movieDetails: object.isRequired
     };
@@ -24,9 +25,9 @@ class MovieDetails extends Component {
         return (
             <MovieInfo
                 actions = { actions }
+                history = { history }
                 movieDetails = { movieDetails }
                 movieId = { movieId }
-                history = { history }
             />
         );
     }

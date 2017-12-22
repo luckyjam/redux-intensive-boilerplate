@@ -17,6 +17,7 @@ import Filter from 'components/Filter';
 class Movies extends Component {
     static propTypes = {
         actions:   object.isRequired,
+        match:     object.isRequired,
         topMovies: array.isRequired
     }
     render () {

@@ -16,6 +16,7 @@ export default (state = initialState, { type, payload }) => {
         case types.GET_FAVORITES_SUCCESS:
 
             return state.set('favorites', fromJS(payload));
+
         default:
             return state;
     }

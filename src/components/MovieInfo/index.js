@@ -9,6 +9,7 @@ import Styles from './styles.scss';
 export default class MovieInfo extends Component {
     static propTypes = {
         actions:      object.isRequired,
+        history:      object.isRequired,
         movieDetails: object.isRequired,
         movieId:      string.isRequired
     }
