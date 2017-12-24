@@ -34,7 +34,7 @@ class MovieDetails extends Component {
 }
 
 const mapStateToProps = ({ movieDetails }) => ({
-    movieDetails: movieDetails.toJS()
+    movieDetails: movieDetails.get('movieDetails').toJS()
 });
 
 const mapDispatchToProps = (dispatch) => ({

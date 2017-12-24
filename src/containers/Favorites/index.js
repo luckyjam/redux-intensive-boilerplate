@@ -10,6 +10,8 @@ import moviesActions from 'actions/movies';
 
 // Components
 import FavoritesList from 'components/FavoritesList';
+import Filter from 'components/Filter';
+
 
 class Favorites extends Component {
 
@@ -20,12 +22,14 @@ class Favorites extends Component {
     render () {
         const { favorites, actions } = this.props;
 
-        return (
+        return [
+            <Filter key = '0' />,
             <FavoritesList
                 actions = { actions }
                 favorites = { favorites }
+                key = '1'
             />
-        );
+        ];
     }
 }
 

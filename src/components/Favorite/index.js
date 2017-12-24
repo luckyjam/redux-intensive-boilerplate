@@ -6,6 +6,8 @@ import { object } from 'prop-types';
 // Instruments
 import Styles from './styles.scss';
 import moment from 'moment';
+import { Transition } from 'react-transition-group';
+import { fromTo } from 'gsap';
 
 export default class Favorite extends Component {
 
@@ -17,7 +19,13 @@ export default class Favorite extends Component {
     constructor () {
         super();
         this.deleteFavorite = ::this._deleteFavorite;
+        this.handleFavoriteAppear = ::this._handleFavoriteAppear;
     }
+
+    _handleFavoriteAppear (favorite) {
+        fromTo(favorite, 1, { opacity: 0 }, { opacity: 1 });
+    }
+
 
     _deleteFavorite () {
         const { id: movieId } = this.props.favoriteData;
@@ -35,19 +43,25 @@ export default class Favorite extends Component {
         } = this.props.favoriteData;
 
         return (
-            <div className = { Styles.favorite } key = { movieId }>
-                <div>
-                    <Link to = { `/movies/details/${movieId}` }>
-                        <img alt = { title } src = { `https://image.tmdb.org/t/p/w500${poster}` } />
-                    </Link>
+            <Transition
+                appear
+                in
+                timeout = { 1000 }
+                onEnter = { this.handleFavoriteAppear }>
+                <div className = { Styles.favorite } key = { movieId }>
+                    <div>
+                        <Link to = { `/movies/details/${movieId}` }>
+                            <img alt = { title } src = { `https://image.tmdb.org/t/p/w500${poster}` } />
+                        </Link>
+                    </div>
+                    <div className = { Styles.favoriteCont }>
+                        <h3><Link to = { `/movies/details/${movieId}` }>{ title }</Link></h3>
+                        <p><strong>Year:</strong> { moment(releaseDate).format('Y') }</p>
+                        <p><strong>Rating:</strong> { voteAverage !== 0 ? voteAverage : 'no rating' }</p>
+                        <span className = { Styles.deleteCross } onClick = { this.deleteFavorite } />
+                    </div>
                 </div>
-                <div className = { Styles.favoriteCont }>
-                    <h3><Link to = { `/movies/details/${movieId}` }>{ title }</Link></h3>
-                    <p><strong>Year:</strong> { moment(releaseDate).format('Y') }</p>
-                    <p><strong>Rating:</strong> { voteAverage !== 0 ? voteAverage : 'no rating' }</p>
-                    <span className = { Styles.deleteCross } onClick = { this.deleteFavorite } />
-                </div>
-            </div>
+            </Transition>
         );
     }
 }

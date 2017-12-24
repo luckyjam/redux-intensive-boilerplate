@@ -26,9 +26,14 @@ export function* fetchGenresWorker () {
 
         // Load favorites from Local Storage
         yield put(moviesActions.getFavorites());
-        yield put(moviesActions.fetchTopMovies('top_rated'));
-        yield put(uiActions.initialize());
+
+        // Start fetcing movies
+        yield put(moviesActions.fetchMovies('top_rated'));
+
     } catch ({ message }) {
         yield put(moviesActions.fetchGenresFail(message));
+    } finally {
+        yield put(uiActions.initialize());
     }
+
 }

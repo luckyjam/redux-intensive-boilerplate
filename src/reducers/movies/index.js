@@ -12,10 +12,10 @@ const initialState = Map({
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
-        case types.FETCH_TOP_MOVIES:
+        case types.FETCH_MOVIES:
             return state.set('filter', payload);
 
-        case types.FETCH_TOP_MOVIES_SUCCESS:
+        case types.FETCH_MOVIES_SUCCESS:
             return state.set('topMovies', fromJS(payload));
 
         case types.FETCH_GENRES_SUCCESS:

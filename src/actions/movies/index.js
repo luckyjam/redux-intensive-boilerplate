@@ -2,26 +2,23 @@
 import types from './types';
 
 export default Object.freeze({
-    fetchTopMovies: (filter) => ({
-        type:    types.FETCH_TOP_MOVIES,
+    fetchMovies: (filter) => ({
+        type:    types.FETCH_MOVIES,
         payload: filter
     }),
-    fetchTopMoviesSuccess: (movies) => ({
-        type:    types.FETCH_TOP_MOVIES_SUCCESS,
+    fetchMoviesSuccess: (movies) => ({
+        type:    types.FETCH_MOVIES_SUCCESS,
         payload: movies
     }),
-    fetchTopMoviesFail: (message) => ({
-        type:    types.FETCH_TOP_MOVIES_FAIL,
+    fetchMoviesFail: (message) => ({
+        type:    types.FETCH_MOVIES_FAIL,
         payload: message
     }),
     addToFavorites: (movie) => ({
         type:    types.ADD_TO_FAVORITES,
         payload: movie
     }),
-    // addToFavoritesSuccess: (favorites) => ({
-    //     type:    types.ADD_TO_FAVORITES_SUCCESS,
-    //     payload: favorites
-    // }),
+
     addToFavoritesFail: (message) => ({
         type:    types.ADD_TO_FAVORITES_FAIL,
         payload: message
@@ -33,10 +30,7 @@ export default Object.freeze({
         type:    types.GET_FAVORITES_SUCCESS,
         payload: favorites
     }),
-    // getFavoritesFail: (message) => ({
-    //     type:    types.GET_FAVORITES_FAIL,
-    //     payload: message
-    // })
+
     deleteFavorite: (favoriteId) => ({
         type:    types.DELETE_FAVORITE,
         payload: favoriteId
@@ -49,7 +43,7 @@ export default Object.freeze({
         payload: genres
     }),
     fetchGenresFail: (message) => ({
-        type: types.FETCH_GENRES_FAIL,
+        type:    types.FETCH_GENRES_FAIL,
         payload: message
     })
 

@@ -1,16 +1,11 @@
 // Core
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { object } from 'prop-types';
 
 // Instruments
 import Styles from './styles.scss';
 
 export default class Filter extends Component {
-
-    static propTypes = {
-        actions: object.isRequired
-    }
 
     render () {
 

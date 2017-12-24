@@ -7,7 +7,7 @@ import movieDetails from './movieDetails';
 
 export function* saga () {
     yield all([
-        movies.fetchTopMoviesWatcher(),
+        movies.fetchMoviesWatcher(),
         movies.addFavoriteWatcher(),
         movies.getFavoritesWatcher(),
         movies.deleteFavoriteWatcher(),

@@ -3,11 +3,12 @@ import { call, put } from 'redux-saga/effects';
 
 // Instruments
 import moviesActions from 'actions/movies';
+import uiActions from 'actions/ui';
 import { getMoviesApi } from 'instruments/api';
 
-export function* fetchTopMoviesWorker ({ payload: filter }) {
+export function* fetchMoviesWorker ({ payload: filter }) {
     try {
-        // yield console.log('start');
+        yield put(uiActions.startFetchingMovies());
         const api = getMoviesApi(filter);
         const response = yield call(fetch, `${api}`, {
             method: 'GET'
@@ -22,10 +23,10 @@ export function* fetchTopMoviesWorker ({ payload: filter }) {
         if (response.status !== 200) {
             throw new Error(message);
         }
-        yield put(moviesActions.fetchTopMoviesSuccess(movies));
+        yield put(moviesActions.fetchMoviesSuccess(movies));
     } catch (message) {
-        yield put(moviesActions.fetchTopMoviesFail(message));
+        yield put(moviesActions.fetchMoviesFail(message));
     } finally {
-        // yield console.log('stop');
+        yield put(uiActions.stopFetchingMovies());
     }
 }

@@ -45,7 +45,7 @@ export default class MovieInfo extends Component {
             overview,
             tagline,
             vote_average: voteScore
-        } = this.props.movieDetails.movieDetails;
+        } = this.props.movieDetails;
         const placeholderPoster = 'http://via.placeholder.com/300x420';
         let genresAll = [];
 

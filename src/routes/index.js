@@ -18,6 +18,7 @@ import Loading from 'components/Loading';
 
 class Routes extends Component {
     static propTypes = {
+        fetchGenres: func.isRequired,
         history:     object.isRequired,
         initialize:  func.isRequired,
         initialized: bool.isRequired,
@@ -25,20 +26,10 @@ class Routes extends Component {
     }
 
     componentDidMount () {
-        const { initialized, initialize, fetchGenres } = this.props;
+        const { fetchGenres } = this.props;
 
         fetchGenres();
-
-
     }
-
-    // componentWillReceiveProps ({ initialized, history }) {
-    //     console.log('initialized', initialized);
-    //     if (!initialized) {
-    //         this.props.initialize();
-    //         history.replace(pages.movies);
-    //     }
-    // }
 
     render () {
         const { initialized } = this.props;
