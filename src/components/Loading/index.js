@@ -2,14 +2,16 @@
 import React, { Component } from 'react';
 
 // Instruments
-import styles from './styles';
+import Styles from './styles';
 
 export default class Loading extends Component {
     render () {
         return (
-            <section className = { styles.loading }>
-                <div>
-                    <h1>Loading...</h1>
+            <section className = { Styles.loading }>
+                <div className = { Styles.spinner }>
+                    <div className = { Styles.bounce1 } />
+                    <div className = { Styles.bounce2 } />
+                    <div className = { Styles.bounce3 } />
                 </div>
             </section>
         );

@@ -18,11 +18,12 @@ class Movies extends Component {
     static propTypes = {
         actions:   object.isRequired,
         favorites: array.isRequired,
+        genres:    array.isRequired,
         match:     object.isRequired,
         topMovies: array.isRequired
     }
     render () {
-        const { topMovies, favorites, actions } = this.props;
+        const { topMovies, favorites, actions, genres } = this.props;
         const { filter } = this.props.match.params;
 
         return [
@@ -32,6 +33,7 @@ class Movies extends Component {
                     actions = { actions }
                     favorites = { favorites }
                     filter = { filter }
+                    genres = { genres }
                     topMovies = { topMovies }
                 />
             </Catcher>
@@ -41,7 +43,8 @@ class Movies extends Component {
 
 const mapStateToProps = ({ movies, favorites }) => ({
     topMovies: getTopMovies(movies),
-    favorites: favorites.get('favorites').toJS()
+    favorites: favorites.get('favorites').toJS(),
+    genres:    movies.get('genres').toJS()
 });
 
 const mapDispatchToProps = (dispatch) => ({

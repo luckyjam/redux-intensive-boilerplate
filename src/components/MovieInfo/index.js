@@ -1,10 +1,12 @@
 // Core
 import React, { Component } from 'react';
 import { object, string } from 'prop-types';
-import { Link } from 'react-router-dom';
 
 // Instruments
 import Styles from './styles.scss';
+
+// Components
+import Loading from 'components/Loading';
 
 export default class MovieInfo extends Component {
     static propTypes = {
@@ -45,7 +47,6 @@ export default class MovieInfo extends Component {
             vote_average: voteScore
         } = this.props.movieDetails.movieDetails;
         const placeholderPoster = 'http://via.placeholder.com/300x420';
-        // let poster = '';
         let genresAll = [];
 
         if (title) {
@@ -66,13 +67,12 @@ export default class MovieInfo extends Component {
                         <p><strong>Homepage:</strong> <a href = { homepage } target = '_blank'>{homepage}</a></p>
                         <p><strong>User rating:</strong> { `${voteScore}` }</p>
                         <p><strong>Overview:</strong> { overview }</p>
-                        <Link to = '/'><button>Back</button></Link>
-                        <button onClick = { this.handleClickGoBack }>Router Back</button>
+                        <button onClick = { this.handleClickGoBack }>Back</button>
                     </div>
                 </div>
             </section>
         ) : (
-            <h1>Loading...</h1>
+            <Loading />
         );
 
         return result;

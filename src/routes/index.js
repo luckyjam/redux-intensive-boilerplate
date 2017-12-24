@@ -7,13 +7,14 @@ import { Switch, withRouter } from 'react-router';
 
 // Instruments
 import uiActions from 'actions/ui';
+import moviesActions from 'actions/movies';
 // import pages from './pages';
 
 // Routing
 import Public from './Public';
 
 // Components
-// import Loading from 'components/Loading';
+import Loading from 'components/Loading';
 
 class Routes extends Component {
     static propTypes = {
@@ -23,11 +24,13 @@ class Routes extends Component {
         location:    object.isRequired
     }
 
-    // componentDidMount () {
-    //     const { initialized, initialize } = this.props;
-    //     console.log('initialized', initialized);
-    //     initialize();
-    // }
+    componentDidMount () {
+        const { initialized, initialize, fetchGenres } = this.props;
+
+        fetchGenres();
+
+
+    }
 
     // componentWillReceiveProps ({ initialized, history }) {
     //     console.log('initialized', initialized);
@@ -38,11 +41,14 @@ class Routes extends Component {
     // }
 
     render () {
+        const { initialized } = this.props;
 
-        return (
+        return initialized ? (
             <Switch>
                 <Public />
             </Switch>
+        ) : (
+            <Loading />
         );
     }
 }
@@ -52,9 +58,10 @@ const mapStateToProps = ({ ui }) => ({
 });
 
 const { initialize } = uiActions;
+const { fetchGenres } = moviesActions;
 
 const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({ initialize }, dispatch)
+    ...bindActionCreators({ initialize, fetchGenres }, dispatch)
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes));

@@ -4,12 +4,14 @@
     display: flex;
     position: relative;
     flex-flow: row;
-    background-color: $paletteColor7;
+    background-color: lighten($buttonGreen, 40%);
 
     .favoriteCont {
+        margin-top: 5px;
         margin-left: 5px;
 
         a {
+            color: $paletteColor1;
             text-decoration: none;
         }
     }

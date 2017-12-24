@@ -12,7 +12,9 @@ export default class MoviesList extends Component {
 
     static propTypes = {
         actions:   object.isRequired,
+        favorites: array.isRequired,
         filter:    string.isRequired,
+        genres:    array.isRequired,
         topMovies: array.isRequired
     }
 
@@ -37,12 +39,13 @@ export default class MoviesList extends Component {
     }
     render () {
 
-        const { topMovies, actions, favorites } = this.props;
+        const { topMovies, actions, favorites, genres } = this.props;
         const movies = topMovies.map((movie) => (
 
             <Movie
                 actions = { actions }
                 favorites = { favorites }
+                genres = { genres }
                 key = { movie.id }
                 movieData = { movie }
             />

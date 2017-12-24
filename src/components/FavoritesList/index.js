@@ -7,6 +7,7 @@ import Styles from './styles.scss';
 
 // Components
 import Favorite from 'components/Favorite';
+import Filter from 'components/Filter';
 
 export default class FavoritesList extends Component {
 
@@ -22,7 +23,6 @@ export default class FavoritesList extends Component {
     render () {
         const { actions, favorites: favoritesList } = this.props;
 
-        console.log('favorites', favoritesList);
         const favorites = favoritesList.map((favorite) => (
             <Favorite
                 actions = { actions }
@@ -31,10 +31,11 @@ export default class FavoritesList extends Component {
             />
         ));
 
-        return (
-            <section className = { Styles.favoritesList }>
+        return [
+            <Filter key = '0' />,
+            <section className = { Styles.favoritesList } key = '1' >
                 { favorites }
             </section>
-        );
+        ];
     }
 }

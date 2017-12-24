@@ -10,6 +10,8 @@ export function* saga () {
         movies.fetchTopMoviesWatcher(),
         movies.addFavoriteWatcher(),
         movies.getFavoritesWatcher(),
+        movies.deleteFavoriteWatcher(),
+        movies.fetchGenresWatcher(),
         movieDetails.fetchMovieDetailsWatcher()
     ]);
 }

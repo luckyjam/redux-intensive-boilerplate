@@ -22,7 +22,6 @@ export function* fetchTopMoviesWorker ({ payload: filter }) {
         if (response.status !== 200) {
             throw new Error(message);
         }
-        yield put(moviesActions.getFavorites());
         yield put(moviesActions.fetchTopMoviesSuccess(movies));
     } catch (message) {
         yield put(moviesActions.fetchTopMoviesFail(message));

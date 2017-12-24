@@ -12,35 +12,16 @@ export default class Filter extends Component {
         actions: object.isRequired
     }
 
-    constructor () {
-        super();
-        this.topRatedFilter = ::this._topRatedFilter;
-        this.upcomingFilter = ::this._upcomingFilter;
-    }
-
-    _topRatedFilter () {
-        const { fetchTopMovies } = this.props.actions;
-
-        fetchTopMovies('top_rated');
-    }
-
-    _upcomingFilter () {
-        const { fetchTopMovies } = this.props.actions;
-
-        fetchTopMovies('upcoming');
-    }
     render () {
 
         return (
             <section className = { Styles.filter }>
-                <NavLink to = '/movies/top_rated'>Top Rated </NavLink>
-                <NavLink to = '/movies/upcoming'>Upcoming</NavLink>
-                <NavLink to = '/movies/popular'>Popular</NavLink>
-                <NavLink to = '/favorites'>Favorites</NavLink>
-                <p>
-                    <button onClick = { this.topRatedFilter }>Top Rated</button>
-                    <button onClick = { this.upcomingFilter }>Upcoming</button>
-                </p>
+                <div>
+                    <NavLink activeClassName = { Styles.active } to = '/movies/top_rated'>Top Rated </NavLink>
+                    <NavLink activeClassName = { Styles.active } to = '/movies/upcoming'>Upcoming</NavLink>
+                    <NavLink activeClassName = { Styles.active } to = '/movies/popular'>Popular</NavLink>
+                    <NavLink activeClassName = { Styles.favoritesActive } className = { Styles.favoritesButton } to = '/favorites'>Favorites</NavLink>
+                </div>
             </section>
         );
     }

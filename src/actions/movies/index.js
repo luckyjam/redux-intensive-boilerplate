@@ -32,10 +32,25 @@ export default Object.freeze({
     getFavoritesSuccess: (favorites) => ({
         type:    types.GET_FAVORITES_SUCCESS,
         payload: favorites
-    })
+    }),
     // getFavoritesFail: (message) => ({
     //     type:    types.GET_FAVORITES_FAIL,
     //     payload: message
     // })
+    deleteFavorite: (favoriteId) => ({
+        type:    types.DELETE_FAVORITE,
+        payload: favoriteId
+    }),
+    fetchGenres: () => ({
+        type: types.FETCH_GENRES
+    }),
+    fetchGenresSuccess: (genres) => ({
+        type:    types.FETCH_GENRES_SUCCESS,
+        payload: genres
+    }),
+    fetchGenresFail: (message) => ({
+        type: types.FETCH_GENRES_FAIL,
+        payload: message
+    })
 
 });

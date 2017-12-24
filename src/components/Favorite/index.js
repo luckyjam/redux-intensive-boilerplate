@@ -10,7 +10,19 @@ import moment from 'moment';
 export default class Favorite extends Component {
 
     static propTypes = {
+        actions:      object.isRequired,
         favoriteData: object.isRequired
+    }
+
+    constructor () {
+        super();
+        this.deleteFavorite = ::this._deleteFavorite;
+    }
+
+    _deleteFavorite () {
+        const { id: movieId } = this.props.favoriteData;
+
+        this.props.actions.deleteFavorite(movieId);
     }
 
     render () {
@@ -33,7 +45,7 @@ export default class Favorite extends Component {
                     <h3><Link to = { `/movies/details/${movieId}` }>{ title }</Link></h3>
                     <p><strong>Year:</strong> { moment(releaseDate).format('Y') }</p>
                     <p><strong>Rating:</strong> { voteAverage !== 0 ? voteAverage : 'no rating' }</p>
-                    {/* <span className = { Styles.deleteCross } onClick = { this.deleteFromFavorites } /> */}
+                    <span className = { Styles.deleteCross } onClick = { this.deleteFavorite } />
                 </div>
             </div>
         );
